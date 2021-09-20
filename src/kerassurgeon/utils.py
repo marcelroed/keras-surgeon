@@ -140,7 +140,9 @@ def single_element(x):
     if isinstance(x, tf.Tensor):
         return x
 
-    if len(x) == 1:
+    length = x.shape[0] if hasattr(x, 'shape') else len(x)
+
+    if length == 1:
         x = x[0]
     return x
 
@@ -149,7 +151,9 @@ def get_one_tensor(x):
     if isinstance(x, tf.Tensor):
         return x
 
-    assert len(x) == 1
+    length = x.shape[0] if hasattr(x, 'shape') else len(x)
+
+    assert length == 1
     return x[0]
 
 
